@@ -274,10 +274,10 @@ router.get("/:username", async (req, res) => {
             console.log(results);
             if(results.length > 0){
                 console.log("User already Exists");
-                connection.query("UPDATE github_profiles SET name=?,bio=?,company=?,avatar=?,profile_url=?,followers=?,following=?,public_repos=?,total_stars=?,total_forks=?, most_used_language=?,account_age=?,github_score=?, location=?   WHERE username=?",
+                connection.query("UPDATE github_profiles SET name=?,bio=?,company=?,avatar=?,profile_url=?,followers=?,following=?,public_repos=?,total_stars=?,total_forks=?, most_used_language=?,account_age=?,github_score=?  WHERE username=?",
                  [analysis.name,analysis.bio,analysis.company,analysis.avatar,
                     analysis.profileUrl,analysis.followers,analysis.following,analysis.publicRepos,analysis.totalStars,analysis.totalForks,
-                    analysis.mostUsedLanguage,analysis.accountAge,analysis.githubScore,analysis.location, analysis.username],
+                    analysis.mostUsedLanguage,analysis.accountAge,analysis.githubScore, analysis.username],
              (err,result)=>{
                  if(err){
                     console.log(err);
@@ -295,11 +295,11 @@ router.get("/:username", async (req, res) => {
            else{
                 console.log("New User");
                 connection.query(
-                 "INSERT INTO github_profiles(username,name,bio,company,avatar,profile_url,followers,following,public_repos,total_stars,total_forks,most_used_language,account_age,github_score, location) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?, ?, ?)",
+                 "INSERT INTO github_profiles(username,name,bio,company,avatar,profile_url,followers,following,public_repos,total_stars,total_forks,most_used_language,account_age,github_score) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?, ?)",
                   [analysis.username,analysis.name,analysis.bio,analysis.company,analysis.avatar,
                    analysis.profileUrl,analysis.followers,analysis.following,analysis.publicRepos,
                    analysis.totalStars,analysis.totalForks,analysis.mostUsedLanguage,
-                   analysis.accountAge,analysis.githubScore, analysis.location],
+                   analysis.accountAge,analysis.githubScore],
             (err,result)=>{
                if(err){
                 console.log(err);

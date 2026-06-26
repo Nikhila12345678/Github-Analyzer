@@ -122,3 +122,24 @@ Run the SQL schema provided below.
   - Created compare profiles api
   - Then verfied user entered both valid users or not and get profiles using ---> "SELECT * FROM github_profiles WHERE username IN (?, ?)"
   - get the both profiles and compared github scores
+
+
+  # Database Setup
+
+The project was initially developed and tested using a local MySQL database. For deployment, the database was migrated to Railway MySQL so that the deployed backend can connect to a cloud-hosted database.
+
+Create Local Database (Development)
+CREATE DATABASE github_analyzer;
+Railway MySQL (Production)
+
+The deployed application uses a Railway-hosted MySQL database.
+
+Configure the following environment variable:
+
+DATABASE_URL=mysql://<username>:<password>@<host>:<port>/<database>
+
+The application connects to the database using:
+
+const connection = mysql.createConnection(process.env.DATABASE_URL);
+
+The github_profiles table is created in the Railway database before deployment.
