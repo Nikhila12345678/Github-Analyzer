@@ -20,7 +20,7 @@ Compare two GitHub profiles
 # Tech Stack
 Node.js
 Express.js
-MySQL
+MySQL (Railway Cloud Database)
 GitHub REST API
 Axios
   
@@ -86,6 +86,8 @@ Run the SQL schema provided below.
  else
    insert the new row (just update the values of the analysis using update query)
 
+   -----> Migrated the database from local MySQL to Railway MySQL for cloud deployment.
+
  # Get All users Api
  - Creates a api--> getprofiles
  - Gives all stored profiles
@@ -143,3 +145,11 @@ The application connects to the database using:
 const connection = mysql.createConnection(process.env.DATABASE_URL);
 
 The github_profiles table is created in the Railway database before deployment.
+
+
+## Project Highlights
+
+- Integrated GitHub REST API to fetch real-time GitHub profile data.
+- Built a custom GitHub Profile Analyzer to calculate useful developer insights.
+- Migrated the database from local MySQL to Railway MySQL for cloud deployment.
+- Implemented RESTful APIs for profile management, leaderboard generation, and profile comparison.
