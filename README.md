@@ -1,0 +1,7 @@
+- Created a Repository
+- Initialized the repository
+- node_modules, package.json, package-lock.json
+- Install express
+- Created Server
+- Listen to port 7777
+- Install nodemon and updated scripts inside package.json
