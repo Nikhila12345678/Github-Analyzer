@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/", githubRoutes);
+app.use("/github", githubRoutes);
 
 
 app.listen(7777, () => {
