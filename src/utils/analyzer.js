@@ -36,6 +36,7 @@ const analyzeProfile = (profile, repositories) => {
        company: profile.company,
        avatar: profile.avatar_url,
        profileUrl: profile.html_url,
+       location: profile.location,
        followers: profile.followers,
        following: profile.following,
        publicRepos: profile.public_repos,

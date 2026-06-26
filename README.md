@@ -17,3 +17,10 @@
 - Find the account age from profile data(using current date)
 - To analyze the user in better way i have calculated the github score based on their followers, public repositories and stars
 - Moved all these into separate file analyzer in utils folder to make it easier
+- stored the analysed data in object
+
+# Installed MySql 
+- Created database github-analyzer
+- Created a table with cols as per the analysis object
+- installed env configuration 
+- stored db password in .env file for security
