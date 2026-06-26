@@ -24,3 +24,11 @@
 - Created a table with cols as per the analysis object
 - installed env configuration 
 - stored db password in .env file for security
+
+- before storing into database...have to check whether the user is already in db or not.
+- If we didnt check duplicate rows will be created in db.
+- For that i'm checking whether the user is already in db or not.
+ If yes--> 
+    just updates the details(written the insert query)
+ else
+   insert the new row (just update the values of the analysis)
