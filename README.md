@@ -1,3 +1,55 @@
+
+# Features
+Fetch GitHub profile using GitHub username
+Fetch all public repositories of a user
+Analyze GitHub profile data
+Calculate:
+GitHub Score
+Total Stars
+Total Forks
+Most Used Language
+Account Age
+Store analyzed profile in MySQL
+Update existing profile instead of creating duplicates
+Retrieve all analyzed profiles
+Retrieve a single analyzed profile
+Delete analyzed profile
+Leaderboard API (Top profiles based on GitHub Score)
+Compare two GitHub profiles
+
+# Tech Stack
+Node.js
+Express.js
+MySQL
+GitHub REST API
+Axios
+  
+# Installation
+  1. Clone Repository
+     git clone https://github.com/<your-username>/github-profile-analyzer.git
+  2. Move into Project
+    cd github-profile-analyzer
+  3. Install Dependencies
+    npm install
+  4. Create MySQL Database
+    CREATE DATABASE github_analyzer;
+  5. Create Table
+
+Run the SQL schema provided below.
+  6. Configure Environment Variables
+    Create a .env file.
+    PORT=7777
+    DB_HOST=localhost
+    DB_USER=root
+    DB_PASSWORD=your_password
+    DB_NAME=github_analyzer
+  7. Start Server
+  node app.js
+   or
+   nodemon app.js
+
+
+   # Project Development
 - Created a Repository
 - Initialized the repository
 - node_modules, package.json, package-lock.json
@@ -22,6 +74,7 @@
 # Installed MySql 
 - Created database github-analyzer
 - Created a table with cols as per the analysis object
+- Database schema 
 - installed env configuration 
 - stored db password in .env file for security
 
