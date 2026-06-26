@@ -68,6 +68,7 @@ Run the SQL schema provided below.
 - I want to analyze the profile using stars , totalforks, most used language so using loop i counted no of stars, forks, and most used language.
 - Find the account age from profile data(using current date)
 - To analyze the user in better way i have calculated the github score based on their followers, public repositories and stars
+- githubScore = (profile.followers * 2) + (profile.public_repos * 5) + (totalStars * 3);
 - Moved all these into separate file analyzer in utils folder to make it easier
 - stored the analysed data in object
 
