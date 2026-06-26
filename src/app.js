@@ -1,10 +1,11 @@
 const express = require("express");
-
+const githubRoutes = require("./routes/githubRoutes");
 const app = express();
 
-app.use((req, res) => {
-    res.send("hii")
-});
+app.use(express.json());
+
+app.use("/", githubRoutes);
+
 
 app.listen(7777, () => {
     console.log("Server created successfully");
