@@ -24,6 +24,32 @@ router.get("/getprofiles", async (req, res) => {
      }
 });
 
+router.get("/profile/:username", async (req, res) => {
+     try{
+        const {username} = req.params;
+        connection.query("Select * from github_profiles where username = ?",username,
+        (err, results) => {
+            if(err){
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+            if(results.length == 0){
+                return res.status(404).json({
+                    message:"Profile Not Found"
+                });
+            }
+            res.json(results);
+        }
+      );
+     }
+     catch(err){
+        res.status(500).json({
+            message: "Internal Server Error"
+        })
+     }
+});
+
 
 router.get("/:username", async (req, res) => {
     try{
