@@ -157,6 +157,93 @@ router.get("/leaderboard", (req, res) => {
 
 });
 
+router.get("/compare", (req, res) => {
+
+    const { user1, user2 } = req.query;
+
+    if (!user1 || !user2) {
+        return res.status(400).json({
+            message: "Please provide user1 and user2"
+        });
+    }
+
+    connection.query("SELECT * FROM github_profiles WHERE username IN (?, ?)",
+        [user1, user2],
+        (err, results) => {
+
+            if (err) {
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+
+            if (results.length < 2) {
+                return res.status(404).json({
+                    message: "One or both users not found"
+                });
+            }
+
+            const profile1 = results.find(
+                profile => profile.username === user1
+            );
+
+            const profile2 = results.find(
+                profile => profile.username === user2
+            );
+
+            let winner;
+
+            if (profile1.github_score > profile2.github_score) {
+
+                winner = {
+                    username: profile1.username,
+                    githubScore: profile1.github_score
+                };
+
+            } else if (profile2.github_score > profile1.github_score) {
+
+                winner = {
+                    username: profile2.username,
+                    githubScore: profile2.github_score
+                };
+
+            } else {
+
+                winner = "Tie";
+
+            }
+
+            res.status(200).json({
+
+                user1: {
+                    username: profile1.username,
+                    githubScore: profile1.github_score,
+                    followers: profile1.followers,
+                    publicRepos: profile1.public_repos,
+                    totalStars: profile1.total_stars,
+                    totalForks: profile1.total_forks,
+                    mostUsedLanguage: profile1.most_used_language
+                },
+
+                user2: {
+                    username: profile2.username,
+                    githubScore: profile2.github_score,
+                    followers: profile2.followers,
+                    publicRepos: profile2.public_repos,
+                    totalStars: profile2.total_stars,
+                    totalForks: profile2.total_forks,
+                    mostUsedLanguage: profile2.most_used_language
+                },
+
+                winner
+
+            });
+
+        }
+    );
+
+});
+
 
 router.get("/:username", async (req, res) => {
     try{

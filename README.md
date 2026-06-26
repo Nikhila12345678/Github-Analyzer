@@ -65,3 +65,7 @@
   and gave ranks by using index
   - if index is 0, 1, 2 then give badges silver, gold, bronze
 
+  # Compare two profiles
+  - Created compare profiles api
+  - Then verfied user entered both valid users or not and get profiles using ---> "SELECT * FROM github_profiles WHERE username IN (?, ?)"
+  - get the both profiles and compared github scores
