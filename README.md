@@ -31,4 +31,9 @@
  If yes--> 
     just updates the details(written the insert query)
  else
-   insert the new row (just update the values of the analysis)
+   insert the new row (just update the values of the analysis using update query)
+
+ # All users Api
+ - Creates a api--> getprofiles
+ - Gives all stored profiles
+ - query(select * from github_profiles)  

@@ -4,6 +4,27 @@ const axios = require("axios");
 const analyzeProfile = require("../utils/analyzer");
 const connection = require("../config/database");
 
+router.get("/getprofiles", async (req, res) => {
+     try{
+        connection.query("Select * from github_profiles",
+        (err, results) => {
+            if(err){
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+            res.json(results);
+        }
+      );
+     }
+     catch(err){
+        res.status(500).json({
+            message: "Internal Server Error"
+        })
+     }
+});
+
+
 router.get("/:username", async (req, res) => {
     try{
     const {username} = req.params;
@@ -82,5 +103,6 @@ router.get("/:username", async (req, res) => {
         });
     }
 });
+
 
 module.exports = router;
