@@ -80,6 +80,42 @@ router.delete("/delete/:username", (req, res) => {
 
 });
 
+
+router.get("/bestprofile", async (req, res) => {
+
+    connection.query("SELECT * FROM github_profiles ORDER BY github_score DESC LIMIT 1",
+        (err, results) => {
+
+            if (err) {
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({
+                    message: "No Profiles Found"
+                });
+            }
+
+            res.status(200).json({
+                 message: "Best GitHub Profile",
+                 winner: {
+                  username: results[0].username,
+                  githubScore: results[0].github_score,
+                  followers: results[0].followers,
+                  publicRepos: results[0].public_repos,
+                  totalStars: results[0].total_stars,
+                  mostUsedLanguage: results[0].most_used_language
+    }
+});
+
+        }
+    );
+
+});
+
+
 router.get("/:username", async (req, res) => {
     try{
     const {username} = req.params;
@@ -158,6 +194,7 @@ router.get("/:username", async (req, res) => {
         });
     }
 });
+
 
 
 module.exports = router;

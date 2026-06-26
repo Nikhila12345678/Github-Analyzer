@@ -9,6 +9,6 @@ app.use(express.json());
 app.use("/github", githubRoutes);
 
 
-app.listen(process.env.PORT, () => {
+app.listen(7777, () => {
     console.log("Server created successfully");
 })

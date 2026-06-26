@@ -39,17 +39,25 @@
  - query(select * from github_profiles)  
 
  # Get single profile
- - Created a api --> app.get(/profile/username, ..)
+ - Created an api --> app.get(/profile/username, ..)
  - get profile using (select * from github_profiles where username = req.params)
  - stored it results
  - if results length is 0. Thwn it gives profile not found.
 
  # Delete profile
- - Create a api app.Delete("/delete/:username, ...)
+ - Created an api app.Delete("/delete/:username, ...)
  - query--> "DELETE FROM github_profiles WHERE username = ?"
  - Deletes the profile if it exists..identified it using affected rows length
  - if length is 0
      then it gives as  "Profile Not Found"
    else 
      "Profile deletd successfully"
+
+  # Best profile
+  - Created an api app.Delete("/bestprofile, ...)
+  - gives the best profile according to the github score
+  - query--> "SELECT * FROM github_profiles ORDER BY github_score DESC LIMIT 1"
+  - Results shows the best profiles important info
+
+  
 
