@@ -116,6 +116,48 @@ router.get("/bestprofile", async (req, res) => {
 });
 
 
+router.get("/leaderboard", (req, res) => {
+
+    connection.query("SELECT * FROM github_profiles ORDER BY github_score DESC",
+        (err, results) => {
+
+            if (err) {
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({
+                    message: "No Profiles Found"
+                });
+            }
+
+            const leaderboard = results.map((profile, index) => ({
+                rank: index + 1,
+                badge:
+                    index === 0 ? "Gold" :
+                    index === 1 ? "Silver" :
+                    index === 2 ? "Bronze" :
+                    null,
+                username: profile.username,
+                githubScore: profile.github_score,
+                followers: profile.followers,
+                publicRepos: profile.public_repos,
+                totalStars: profile.total_stars,
+            }));
+
+            res.status(200).json({
+                totalProfiles: leaderboard.length,
+                leaderboard
+            });
+
+        }
+    );
+
+});
+
+
 router.get("/:username", async (req, res) => {
     try{
     const {username} = req.params;

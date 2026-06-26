@@ -59,5 +59,9 @@
   - query--> "SELECT * FROM github_profiles ORDER BY github_score DESC LIMIT 1"
   - Results shows the best profiles important info
 
-  
+  # Leader Board
+  - Created leaderboard api
+  - first it will get all profiles in descending order of github score, then using map datastructure traversed though it 
+  and gave ranks by using index
+  - if index is 0, 1, 2 then give badges silver, gold, bronze
 
