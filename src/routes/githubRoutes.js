@@ -50,6 +50,35 @@ router.get("/profile/:username", async (req, res) => {
      }
 });
 
+router.delete("/delete/:username", (req, res) => {
+
+    const { username } = req.params;
+
+    connection.query(
+        "DELETE FROM github_profiles WHERE username = ?",
+        [username],
+        (err, result) => {
+
+            if (err) {
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({
+                    message: "Profile Not Found"
+                });
+            }
+
+            res.status(200).json({
+                message: "Profile Deleted Successfully"
+            });
+
+        }
+    );
+
+});
 
 router.get("/:username", async (req, res) => {
     try{
