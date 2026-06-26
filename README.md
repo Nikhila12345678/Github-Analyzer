@@ -153,3 +153,6 @@ The github_profiles table is created in the Railway database before deployment.
 - Built a custom GitHub Profile Analyzer to calculate useful developer insights.
 - Migrated the database from local MySQL to Railway MySQL for cloud deployment.
 - Implemented RESTful APIs for profile management, leaderboard generation, and profile comparison.
+
+# Live URL
+  https://github-profile-analyzer-2ezt.onrender.com
