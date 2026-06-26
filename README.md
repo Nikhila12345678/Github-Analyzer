@@ -37,3 +37,11 @@
  - Creates a api--> getprofiles
  - Gives all stored profiles
  - query(select * from github_profiles)  
+
+ # Get single profile
+ - Created a api --> /profile/username
+ - get profile using (select * from github_profiles where username = req.params)
+ - stored it results
+ - if results length is 0. Thwn it gives profile not found.
+
+ 
